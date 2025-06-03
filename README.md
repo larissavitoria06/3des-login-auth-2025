@@ -41,6 +41,7 @@ Este projeto implementa uma autenticação simples usando JSON Web Tokens (JWT) 
 ## Detalhes dos arquivos
 
 ## Controllers
+
 ### login.js
 -Simula o login com e-mail e senha fixos.
 -Gera um token JWT com:
@@ -50,6 +51,7 @@ Este projeto implementa uma autenticação simples usando JSON Web Tokens (JWT) 
 -O token tem validade de 2 minutos (expiresIn: "2min").
 -Usa a chave secreta de process.env.SECRET_JWT.
 -Retorna o token para o cliente.
+
 ### posts.js
 -Trabalha com o array de posts importado da pasta data.
 -Fornece funções para listar posts, buscar por ID, ordenar por data, visualizações ou curtidas.
