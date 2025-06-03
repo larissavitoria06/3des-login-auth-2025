@@ -36,21 +36,23 @@ Este projeto implementa uma autenticação simples usando JSON Web Tokens (JWT) 
 ├── server.js # Inicializa o servidor Express
 └── .env # Variáveis de ambiente, incluindo SECRET_JWT
 
-
 ---
 
 ## Detalhes dos arquivos
 
-### controllers/login.js
-
-- Simula um login com credenciais fixas (e-mail e senha)
-- Gera um token JWT com validade de 2 minutos usando uma chave secreta
-- Retorna o token para o cliente
-
-### controllers/posts.js
-
-- Trabalha com o array de posts simulados
-- Fornece funções para listar, buscar e ordenar posts
+## Controllers
+### login.js
+-Simula o login com e-mail e senha fixos.
+-Gera um token JWT com:
+-ID aleatório (usando crypto.randomUUID())
+-Nome do usuário
+-Avatar
+-O token tem validade de 2 minutos (expiresIn: "2min").
+-Usa a chave secreta de process.env.SECRET_JWT.
+-Retorna o token para o cliente.
+### posts.js
+-Trabalha com o array de posts importado da pasta data.
+-Fornece funções para listar posts, buscar por ID, ordenar por data, visualizações ou curtidas.
 
 ### data/posts.js
 
@@ -63,16 +65,20 @@ Este projeto implementa uma autenticação simples usando JSON Web Tokens (JWT) 
   - `views`: número de visualizações
   - `likes`: número de curtidas
 
-### middlewares/auth.js
+### middlewares/auth.js - Middleware de autenticação JWT
 
 - Middleware que verifica se o token JWT está presente e é válido
+- Verifica se o cabeçalho `Authorization` contém um token válido.
 - Se o token for válido, anexa os dados do usuário à requisição e permite acesso
 - Se o token for inválido ou ausente, bloqueia o acesso com erro 401
+- Usa a biblioteca `jsonwebtoken` para criar e verificar tokens.
 
 ### routes/login.js
 
 - Define a rota POST `/login` para receber dados de autenticação
 - Chama o controlador que gera o token JWT após validação
+-Rota POST /login para autenticação do usuário.
+-Chama a função do controlador de login para validar credenciais e gerar token.
 
 ### routes/posts.js
 
@@ -82,8 +88,10 @@ Este projeto implementa uma autenticação simples usando JSON Web Tokens (JWT) 
 ### server.js
 
 - Inicializa o servidor Express
+-Lê variáveis do arquivo `.env` usando o pacote `dotenv`.
 - Configura o middleware para interpretar JSON
 - Importa e usa as rotas e middlewares
+-Separa as rotas em arquivos distintos (`login.js` e `posts.js`).
 - Escuta requisições na porta 3000
 
 ---
@@ -100,3 +108,4 @@ Rota protegida que disponibiliza dados sensíveis (posts). Apenas usuários com 
 -Express
 -JSON Web Token (jsonwebtoken)
 -dotenv
+-crypto (módulo nativo do Node.js)
