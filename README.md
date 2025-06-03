@@ -2,18 +2,20 @@
 
 Projeto feito em dupla com [larissadossantosdarocha](https://github.com/larissadossantosdarocha)
 
-## 📦 Sobre o projeto
+Projeto feito em dupla com [larissavitoria06](https://github.com/larissavitoria06)
+
+## Sobre o projeto
 
 Autenticação simples com JWT em Node.js usando Express.
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 - Servidor Express com leitura de variáveis `.env`
 - Rotas separadas (`login.js`, `posts.js`)
 - Middleware de autenticação JWT
 - Lista de posts simulada em um array
 
-## 📂 Estrutura
+##  Estrutura
 
 ### `controllers/login.js`
 
