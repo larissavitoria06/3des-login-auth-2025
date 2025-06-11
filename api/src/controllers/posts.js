@@ -1,7 +1,7 @@
 const dataPosts = require("../data/posts");
 
 const posts = (req, res) => {
-    res.status(200).send(dataPosts).end();
+    res.status(200).json(dataPosts).end();
 }
 
 module.exports = {
